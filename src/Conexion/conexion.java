@@ -30,8 +30,7 @@ public class conexion {
 
         }
         
-    }
-    
+    }   
     
     public Connection ConnecrDB() throws ClassNotFoundException, SQLException{
         
