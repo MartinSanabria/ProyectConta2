@@ -59,7 +59,15 @@ public class jpCatalogo extends javax.swing.JPanel {
             new String [] {
                 "Código", "Cuenta"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Cuenta:");

@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/fjose/OneDrive/Escritorio/sexto%20Ciclo/Tecnicas%20contables/periodo%202/proyectoConta2/ProyectConta2/src/Conexion/conexion.java</file>
+            <file>file:/C:/Users/fjose/OneDrive/Escritorio/sexto%20Ciclo/Tecnicas%20contables/periodo%202/proyectoConta2/ProyectConta2/src/Entidades/libroDiario.java</file>
+            <file>file:/C:/Users/fjose/OneDrive/Escritorio/sexto%20Ciclo/Tecnicas%20contables/periodo%202/proyectoConta2/ProyectConta2/src/Entidades/Asiento.java</file>
+=======
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/Conexion/conexion.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/forms/frmPrincipal.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/forms/jpLibroMayor.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/forms/jpCrearLibro.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/forms/jpLibroDiario.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoConta/src/forms/jpCatalogo.java</file>
+>>>>>>> f7c2e8f8e8c4644a2e0aa310b170d054c0a42adc
         </group>
     </open-files>
 </project-private>

@@ -65,5 +65,14 @@ public class conexion {
             System.out.println(e);
             return null;
         }
-    }
+    }   
+    
+    public void instUpdRegistros(String sentencia){
+        try {
+          PreparedStatement pst = con.prepareStatement(sentencia);
+          pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }   
 }
