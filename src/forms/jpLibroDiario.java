@@ -20,6 +20,7 @@ public class jpLibroDiario extends javax.swing.JPanel {
     /**
      * Creates new form jpLibroDiario
      */
+    
     public jpLibroDiario() {
         initComponents();
         this.mostrarCatalogo();
@@ -93,7 +94,6 @@ public class jpLibroDiario extends javax.swing.JPanel {
 
             }
         ));
-        jTable2.setEnabled(false);
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);

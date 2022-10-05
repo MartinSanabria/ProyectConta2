@@ -8,8 +8,11 @@ package forms;
 import Conexion.conexion;
 import Entidades.libroDiario;
 import java.awt.BorderLayout;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +22,14 @@ public class jpCrearLibro extends javax.swing.JPanel {
     /**
      * Creates new form jpCrearLibro
      */
+       conexion conectO;
+    DefaultTableModel modelo = new DefaultTableModel();
       libroDiario libD ;
     public jpCrearLibro() {
         initComponents();   
          libD = new libroDiario();
+         conectO = new conexion();
+         this.mostrarLibros();
                  
     }
 frmPrincipal p = new frmPrincipal();
@@ -62,13 +69,13 @@ frmPrincipal p = new frmPrincipal();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -104,6 +111,11 @@ frmPrincipal p = new frmPrincipal();
         admin.add(btnGenerarAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         btnEliminar.setText("Eliminar libro");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         admin.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         btnAgregar.setText("Agregar Libro");
@@ -119,7 +131,25 @@ frmPrincipal p = new frmPrincipal();
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public void mostrarLibros(){
+        try {
+             this.jTable1.setModel(modelo);
+            ResultSet rst = conectO.consultaRegistros("select id_libro, nombre_empresa,fecha_inicio,fecha_fin from libroDiario;");  
+            modelo.addColumn("N° Libro");
+            modelo.addColumn("Empresa");
+            modelo.addColumn("Fecha de Inicio");
+            modelo.addColumn("Fecha de FIn");
+            while (rst.next()) {   
+                
+             Object[] data= {rst.getString("id_libro"),rst.getString("nombre_empresa"),
+                 rst.getString("fecha_inicio"),rst.getDouble("fecha_fin")};                
+                modelo.addRow(data);               
+            }          
+        } catch (SQLException e) {
+            System.out.println(e);
+            
+        }
+    }
     private void btnGenerarAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsientoActionPerformed
         
 
@@ -142,6 +172,11 @@ frmPrincipal p = new frmPrincipal();
        
         p.mostrarlibro();
     }//GEN-LAST:event_btnGenerarAsientoMousePressed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
     
   
     

@@ -17,12 +17,12 @@ import java.sql.SQLException;
  */
 public class conexion {
     
-    Connection connection = null;
+    Connection conn = null;
 
     public conexion(){
         try{
-         connection = DriverManager.getConnection( "jdbc:sqlite:bdProyect.s3db" );
-         if ( connection != null ){
+         conn = DriverManager.getConnection( "jdbc:sqlite:bdProyect.s3db" );
+         if ( conn != null ){
             System.out.println("Conexión exitosa!");
          }
       }
@@ -32,6 +32,7 @@ public class conexion {
       }
 
     }
+    
     public Connection ConnecrDB() throws ClassNotFoundException, SQLException{
         
             Class.forName("org.sqlite.JDBC");
@@ -46,7 +47,7 @@ public class conexion {
     
     public boolean ejecutaSentenciaSQL(String sentencia){
         try {
-            PreparedStatement pst = connection.prepareStatement(sentencia);
+            PreparedStatement pst = conn.prepareStatement(sentencia);
             pst.execute();      
             return true;
         } catch (SQLException e) {
@@ -57,7 +58,7 @@ public class conexion {
     
     public ResultSet consultaRegistros(String sentencia){
         try {
-          PreparedStatement pst = connection.prepareStatement(sentencia);
+          PreparedStatement pst = conn.prepareStatement(sentencia);
           ResultSet rst = pst.executeQuery();
           return rst;
         } catch (SQLException e) {
