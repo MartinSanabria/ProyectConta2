@@ -67,15 +67,20 @@ frmPrincipal p = new frmPrincipal();
         admin.setPreferredSize(new java.awt.Dimension(620, 380));
         admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable (int row, int col){
+                return false;
+            }
+        };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ) {
             boolean[] canEdit = new boolean [] {

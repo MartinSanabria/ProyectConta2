@@ -43,6 +43,11 @@ public class jpLibroMayor extends javax.swing.JPanel {
         admin.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 200, -1));
         admin.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 100, -1));
 
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable (int row, int col){
+                return false;
+            }
+        };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -66,6 +71,11 @@ public class jpLibroMayor extends javax.swing.JPanel {
 
         admin.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 34, 600, 92));
 
+        jTable2 = new javax.swing.JTable(){
+            public boolean isCellEditable (int row, int col){
+                return false;
+            }
+        };
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

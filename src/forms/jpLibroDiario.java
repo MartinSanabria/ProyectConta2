@@ -57,6 +57,11 @@ public class jpLibroDiario extends javax.swing.JPanel {
         admin.setMaximumSize(new java.awt.Dimension(620, 380));
         admin.setPreferredSize(new java.awt.Dimension(620, 380));
 
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable (int row, int col){
+                return false;
+            }
+        };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
