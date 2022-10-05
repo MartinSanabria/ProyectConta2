@@ -69,11 +69,9 @@ public class conexion {
     
     public void instUpdRegistros(String sentencia){
         try {
-<<<<<<< HEAD
+
           PreparedStatement pst = conn.prepareStatement(sentencia);
-=======
-          PreparedStatement pst = con.prepareStatement(sentencia);
->>>>>>> 77b6aa922b1b6bfa22a49de6c6041481b1eee7bb
+
           pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
