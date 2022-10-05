@@ -159,7 +159,7 @@ public class jpCatalogo extends javax.swing.JPanel {
             
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
+            JOptionPane.showMessageDialog(null,"error al cargar el catalogo");
         }
     }
     public void abrirarchivo(String archivo){
