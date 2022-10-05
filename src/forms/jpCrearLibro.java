@@ -70,7 +70,15 @@ frmPrincipal p = new frmPrincipal();
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 620, 120));

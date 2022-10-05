@@ -5,9 +5,11 @@
  */
 package forms;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -55,7 +57,7 @@ public class jpCatalogo extends javax.swing.JPanel {
 
             },
             new String [] {
-
+                "Código", "Cuenta"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -126,9 +128,8 @@ public class jpCatalogo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-      
- 
+
+ abrirarchivo("src\\Catalogo.txt");
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -139,11 +140,12 @@ public class jpCatalogo extends javax.swing.JPanel {
         try {
             BufferedReader br = new BufferedReader(new FileReader(cuentas));
            
-            String firstLine = br.readLine().trim();
-            String[] columnsName = firstLine.split(",");
+//            String firstLine = br.readLine().trim();
+//            String[] columnsName = firstLine.split(",");
             DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.setColumnIdentifiers(columnsName);
-            
+//            model.setColumnIdentifiers(columnsName);
+//            jTable1.setEnabled(false);
+
            
             Object[] tableLines = br.lines().toArray();
             
@@ -160,6 +162,21 @@ public class jpCatalogo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
         }
     }
+    public void abrirarchivo(String archivo){
+
+     try {
+
+            File objetofile = new File (archivo);
+            Desktop.getDesktop().open(objetofile);
+
+     }catch (IOException ex) {
+
+            System.out.println(ex);
+
+     }
+
+}                         
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel admin;
     private javax.swing.JButton jButton1;
