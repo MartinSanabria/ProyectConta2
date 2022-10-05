@@ -60,6 +60,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         panel.setBackground(new Color(84,106,158));
     }
     
+    //metodo para llamar jpanel libro diario
+    public void mostrarlibro(){
+        jpLibroDiario panelLibro = new jpLibroDiario();
+        this.ShowPanel(panelLibro);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -376,14 +381,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsientoMouseExited
 
     private void btnAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsientoMousePressed
-        // TODO add your handling code here:
-            
-       setColor(btncatalogo);
-        resetColor(this.btncatalogo);
-        // Abrir sección
-        jpLibroDiario panelLibro = new jpLibroDiario();
-        this.ShowPanel(panelLibro);
-        this.btnAsiento.setVisible(false);;
     }//GEN-LAST:event_btnAsientoMousePressed
 
     /**
