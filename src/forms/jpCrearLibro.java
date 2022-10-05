@@ -127,6 +127,15 @@ frmPrincipal p = new frmPrincipal();
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+       
+        String fechaI = ((JTextField)this.fInicio.getDateEditor().getUiComponent()).getText();
+        String fechaF = ((JTextField)this.fFin.getDateEditor().getUiComponent()).getText();
+        libD.setEmpresa(this.nameEmpresa.getText().trim());
+        libD.setF_fin(fechaF);
+        libD.setF_inicio(fechaI);
+       
+
+        libD.aggLibro();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGenerarAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarAsientoMousePressed

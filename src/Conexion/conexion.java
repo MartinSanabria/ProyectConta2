@@ -17,27 +17,27 @@ import java.sql.SQLException;
  */
 public class conexion {
     
-    String conexionBD = "jdbc:sqlite:bdProyect.s3db";
-    Connection con = null;
-    
-    public void Conexion(){
-        try {
-            Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection(conexionBD);
-          
-        } catch (Exception e) {
-            System.out.println(e);
+    Connection connection = null;
 
-        }
-        
-    }   
-    
+    public conexion(){
+        try{
+         connection = DriverManager.getConnection( "jdbc:sqlite:bdProyect.s3db" );
+         if ( connection != null ){
+            System.out.println("Conexión exitosa!");
+         }
+      }
+      catch ( Exception ex ) {
+         System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
+         System.out.println("Error en la conexión");
+      }
+
+    }
     public Connection ConnecrDB() throws ClassNotFoundException, SQLException{
         
             Class.forName("org.sqlite.JDBC");
            
          
-        Connection con1 = DriverManager.getConnection("jdbc:sqlite:BD.s3db");
+        Connection con1 = DriverManager.getConnection("jdbc:sqlite:bdProyect.s3db");
         return con1;
         
         
@@ -46,7 +46,7 @@ public class conexion {
     
     public boolean ejecutaSentenciaSQL(String sentencia){
         try {
-            PreparedStatement pst = con.prepareStatement(sentencia);
+            PreparedStatement pst = connection.prepareStatement(sentencia);
             pst.execute();      
             return true;
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class conexion {
     
     public ResultSet consultaRegistros(String sentencia){
         try {
-          PreparedStatement pst = con.prepareStatement(sentencia);
+          PreparedStatement pst = connection.prepareStatement(sentencia);
           ResultSet rst = pst.executeQuery();
           return rst;
         } catch (SQLException e) {
