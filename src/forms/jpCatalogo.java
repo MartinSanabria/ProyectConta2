@@ -26,7 +26,7 @@ public class jpCatalogo extends javax.swing.JPanel {
      */
     public jpCatalogo() {
         initComponents();
-        
+        this.mostrarCatalogo();
                
     }
         
@@ -127,7 +127,13 @@ public class jpCatalogo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-       String filePath = "src\\Catalogo.txt";
+      
+ 
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void mostrarCatalogo(){
+     String filePath = "src\\Catalogo.txt";
         File cuentas = new File(filePath);
         
         try {
@@ -153,11 +159,7 @@ public class jpCatalogo extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
         }
- 
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel admin;
     private javax.swing.JButton jButton1;

@@ -5,6 +5,12 @@
  */
 package forms;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author blackbird
@@ -16,6 +22,7 @@ public class jpLibroDiario extends javax.swing.JPanel {
      */
     public jpLibroDiario() {
         initComponents();
+        this.mostrarCatalogo();
     }
 
     /**
@@ -76,14 +83,17 @@ public class jpLibroDiario extends javax.swing.JPanel {
 
         jLabel5.setText("Comentario:");
 
+        jScrollPane2.setEnabled(false);
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+                {}
             },
             new String [] {
-                "Código", "Nombre"
+
             }
         ));
+        jTable2.setEnabled(false);
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);
@@ -183,7 +193,33 @@ public class jpLibroDiario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+public void mostrarCatalogo(){
+     String filePath = "src\\Catalogo.txt";
+        File cuentas = new File(filePath);
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(cuentas));           
+            String firstLine = br.readLine().trim();
+            String[] columnsName = firstLine.split(",");
+            DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+            model.setColumnIdentifiers(columnsName);
+            
+           
+            Object[] tableLines = br.lines().toArray();
+            
+            
+            for(int i = 0; i < tableLines.length; i++)
+            {
+                String line = tableLines[i].toString().trim();
+                String[] dataRow = line.split(",");
+                model.addRow(dataRow);
+            }
+            
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel admin;
     private javax.swing.JButton jButton1;

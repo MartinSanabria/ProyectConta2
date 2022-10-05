@@ -381,6 +381,13 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsientoMouseExited
 
     private void btnAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsientoMousePressed
+        // TODO add your handling code here:
+         setColor(btncatalogo);
+        resetColor(this.btncatalogo);
+        // Abrir sección
+        jpLibroDiario panelLibro = new jpLibroDiario();
+        this.ShowPanel(panelLibro);
+        
     }//GEN-LAST:event_btnAsientoMousePressed
 
     /**
