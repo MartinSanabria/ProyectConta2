@@ -180,8 +180,8 @@ frmPrincipal p = new frmPrincipal();
         }
     }
     private void btnGenerarAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsientoActionPerformed
-        
-
+        frmAsiento as = new frmAsiento();
+        as.setVisible(true);
     }//GEN-LAST:event_btnGenerarAsientoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -220,6 +220,7 @@ frmPrincipal p = new frmPrincipal();
         // TODO add your handling code here:
            int index = this.jTable1.getSelectedRow();
         this.nLibro = (String) this.jTable1.getValueAt(index, 0);
+        
     }//GEN-LAST:event_jTable1MouseClicked
     
   

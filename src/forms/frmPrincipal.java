@@ -31,7 +31,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         this.setTitle("Servicio Perfecto");
         this.setLocationRelativeTo(this);
         this.setResizable(false);
-        this.btnAsiento.setVisible(false);
 //       setIconImage(new ImageIcon(getClass().getResource("img/logo.png")).getImage());
 //        Image icon= new Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/logo.png"));
         
@@ -72,9 +71,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jpBground = new javax.swing.JPanel();
         jpbtns = new javax.swing.JPanel();
-        btnAsiento = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jpcontenido = new javax.swing.JPanel();
         Menu = new javax.swing.JPanel();
         btndiario = new javax.swing.JPanel();
@@ -107,50 +103,15 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jpbtns.setBackground(new java.awt.Color(49, 68, 111));
 
-        btnAsiento.setBackground(new java.awt.Color(84, 106, 158));
-        btnAsiento.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnAsiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAsiento.setMaximumSize(new java.awt.Dimension(120, 60));
-        btnAsiento.setMinimumSize(new java.awt.Dimension(120, 60));
-        btnAsiento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAsientoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAsientoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAsientoMousePressed(evt);
-            }
-        });
-        btnAsiento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("contable");
-        btnAsiento.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 20));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Asiento");
-        btnAsiento.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 60, 20));
-
         javax.swing.GroupLayout jpbtnsLayout = new javax.swing.GroupLayout(jpbtns);
         jpbtns.setLayout(jpbtnsLayout);
         jpbtnsLayout.setHorizontalGroup(
             jpbtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpbtnsLayout.createSequentialGroup()
-                .addContainerGap(632, Short.MAX_VALUE)
-                .addComponent(btnAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 740, Short.MAX_VALUE)
         );
         jpbtnsLayout.setVerticalGroup(
             jpbtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpbtnsLayout.createSequentialGroup()
-                .addComponent(btnAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         jpBground.add(jpbtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 40));
@@ -333,7 +294,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // Abrir sección
         jpCrearLibro panelLibroDiario = new jpCrearLibro();
         this.ShowPanel(panelLibroDiario);        
-       this.btnAsiento.setVisible(true);
     }//GEN-LAST:event_btndiarioMousePressed
    
     private void btnmayorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmayorMouseEntered
@@ -350,7 +310,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // Abrir sección
         jpLibroMayor panelLibroMayor = new jpLibroMayor();
         this.ShowPanel(panelLibroMayor);
-        this.btnAsiento.setVisible(false);
     }//GEN-LAST:event_btnmayorMousePressed
 
     private void btncatalogoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncatalogoMouseEntered
@@ -369,26 +328,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         // Abrir sección
         jpCatalogo panelCatalogo = new jpCatalogo();
         this.ShowPanel(panelCatalogo);
-        this.btnAsiento.setVisible(false);;
+     
     }//GEN-LAST:event_btncatalogoMousePressed
-
-    private void btnAsientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsientoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAsientoMouseEntered
-
-    private void btnAsientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsientoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAsientoMouseExited
-
-    private void btnAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsientoMousePressed
-        // TODO add your handling code here:
-         setColor(btncatalogo);
-        resetColor(this.btncatalogo);
-        // Abrir sección
-        jpLibroDiario panelLibro = new jpLibroDiario();
-        this.ShowPanel(panelLibro);
-        
-    }//GEN-LAST:event_btnAsientoMousePressed
 
     /**
      * @param args the command line arguments
@@ -427,7 +368,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    public javax.swing.JPanel btnAsiento;
     private javax.swing.JPanel btncatalogo;
     private javax.swing.JPanel btndiario;
     private javax.swing.JPanel btnmayor;
@@ -435,8 +375,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jpBground;
