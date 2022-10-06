@@ -10,6 +10,7 @@ import Entidades.libroDiario;
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,7 @@ public class jpCrearLibro extends javax.swing.JPanel {
     /**
      * Creates new form jpCrearLibro
      */
+    public String nLibro;
        conexion conectO;
     DefaultTableModel modelo = new DefaultTableModel();
       libroDiario libD ;
@@ -91,6 +93,11 @@ frmPrincipal p = new frmPrincipal();
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 620, 120));
@@ -144,18 +151,27 @@ frmPrincipal p = new frmPrincipal();
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void limpiarCampos(){
+        this.nameEmpresa.setText(null);
+        this.fFin.setCalendar(null);
+        this.fInicio.setCalendar(null);
+
+    }
     public void mostrarLibros(){
         try {
+             modelo.setColumnCount(0);
+          modelo.setRowCount(0);
+
              this.jTable1.setModel(modelo);
             ResultSet rst = conectO.consultaRegistros("select id_libro, nombre_empresa,fecha_inicio,fecha_fin from libroDiario;");  
             modelo.addColumn("N° Libro");
             modelo.addColumn("Empresa");
             modelo.addColumn("Fecha de Inicio");
-            modelo.addColumn("Fecha de FIn");
+            modelo.addColumn("Fecha de Fin");
             while (rst.next()) {   
                 
              Object[] data= {rst.getString("id_libro"),rst.getString("nombre_empresa"),
-                 rst.getString("fecha_inicio"),rst.getDouble("fecha_fin")};                
+                 rst.getString("fecha_inicio"),rst.getString("fecha_fin")};                
                 modelo.addRow(data);               
             }          
         } catch (SQLException e) {
@@ -170,15 +186,23 @@ frmPrincipal p = new frmPrincipal();
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-       
+     String empresa = this.nameEmpresa.getText().trim();
         String fechaI = ((JTextField)this.fInicio.getDateEditor().getUiComponent()).getText();
         String fechaF = ((JTextField)this.fFin.getDateEditor().getUiComponent()).getText();
-        libD.setEmpresa(this.nameEmpresa.getText().trim());
-        libD.setF_fin(fechaF);
-        libD.setF_inicio(fechaI);
-       
+        
+        if (empresa.length()>0 && fechaI.getBytes().length>9 && fechaF.getBytes().length>9) {
+            
+           libD.setEmpresa(empresa);
+           libD.setF_fin(fechaF);
+           libD.setF_inicio(fechaI);       
 
-        libD.aggLibro();
+           libD.aggLibro();
+           this.mostrarLibros();
+           this.limpiarCampos();
+        }else{
+          
+            JOptionPane.showMessageDialog(null, "Por favor llene los campos de manera correcta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGenerarAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarAsientoMousePressed
@@ -188,8 +212,15 @@ frmPrincipal p = new frmPrincipal();
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        
+          libD.deleteLibro(nLibro);
+        this.mostrarLibros();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+           int index = this.jTable1.getSelectedRow();
+        this.nLibro = (String) this.jTable1.getValueAt(index, 0);
+    }//GEN-LAST:event_jTable1MouseClicked
     
   
     
