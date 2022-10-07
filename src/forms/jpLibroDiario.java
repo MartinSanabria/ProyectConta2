@@ -5,10 +5,15 @@
  */
 package forms;
 
+import Conexion.conexion;
+import Entidades.Asiento;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,10 +25,22 @@ public class jpLibroDiario extends javax.swing.JPanel {
     /**
      * Creates new form jpLibroDiario
      */
-    String lib;
-    public jpLibroDiario() {
+    public jpLibroDiario(){
         initComponents();
-        this.mostrarCatalogo();
+    }
+    
+    int lib;
+    int id;
+    DefaultTableModel modelo = new DefaultTableModel();
+     conexion conectO;
+     Asiento asiento;
+    public jpLibroDiario(int libro) {
+        initComponents();
+        this.mostrarAsiento();
+        this.lib = libro;
+        asiento = new Asiento();
+        conectO = new conexion();
+        this.cargarAsiento();
     }
 
     /**
@@ -44,14 +61,18 @@ public class jpLibroDiario extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTDebe = new javax.swing.JTextField();
+        jTComentario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField5 = new javax.swing.JTextField();
+        jTHaber = new javax.swing.JTextField();
+        jDate = new com.toedter.calendar.JDateChooser();
+        jTCuenta = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jTidAsiento = new javax.swing.JTextField();
+        jTCodigo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         admin.setBackground(new java.awt.Color(204, 204, 255));
         admin.setMaximumSize(new java.awt.Dimension(6200, 3800));
@@ -81,9 +102,19 @@ public class jpLibroDiario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +134,11 @@ public class jpLibroDiario extends javax.swing.JPanel {
         jLabel5.setText("Comentario:");
 
         jScrollPane2.setEnabled(false);
+        jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jScrollPane2MousePressed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +148,16 @@ public class jpLibroDiario extends javax.swing.JPanel {
 
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
+
+        jLabel6.setText("ID:");
+
+        jLabel7.setText("Codigo:");
 
         javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);
         admin.setLayout(adminLayout);
@@ -122,36 +167,54 @@ public class jpLibroDiario extends javax.swing.JPanel {
                 .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(adminLayout.createSequentialGroup()
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(adminLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(adminLayout.createSequentialGroup()
-                                        .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(49, 49, 49)
-                                        .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField4)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                            .addComponent(jTextField5)))
-                                    .addGroup(adminLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminLayout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(adminLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(adminLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminLayout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(adminLayout.createSequentialGroup()
+                                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jTDebe, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jTCuenta, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, adminLayout.createSequentialGroup()
+                                                        .addGap(2, 2, 2)
+                                                        .addComponent(jTHaber, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jTComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(adminLayout.createSequentialGroup()
+                                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(adminLayout.createSequentialGroup()
+                                                        .addComponent(jLabel6)
+                                                        .addGap(43, 43, 43))
+                                                    .addGroup(adminLayout.createSequentialGroup()
+                                                        .addComponent(jLabel7)
+                                                        .addGap(18, 18, 18)))
+                                                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jTCodigo)
+                                                    .addComponent(jTidAsiento, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))))
+                                        .addGap(203, 203, 203)))))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminLayout.createSequentialGroup()
-                        .addContainerGap(18, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -163,24 +226,32 @@ public class jpLibroDiario extends javax.swing.JPanel {
                         .addGap(42, 42, 42)
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTidAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTDebe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTHaber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE))
+                            .addComponent(jTComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE))
                     .addGroup(adminLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -215,55 +286,142 @@ public class jpLibroDiario extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         String fecha = ((JTextField)this.jDate.getDateEditor().getUiComponent()).getText();
+         int id = Integer.parseInt(this.jTidAsiento.getText());
+         int codigo = Integer.parseInt(this.jTCodigo.getText());
+         String cuenta = this.jTCuenta.getText();
+         double debe = Double.parseDouble(this.jTDebe.getText());
+         double haber = Double.parseDouble(this.jTHaber.getText());
+         String concepto = this.jTComentario.getText();
+         
+         if(debe>=0 && haber >=0 && fecha.getBytes().length>9){
+             asiento.setId(id);
+             asiento.setCodigo(codigo);
+             asiento.setCuenta(cuenta);
+             asiento.setConcepto(concepto);
+             asiento.setDebe(debe);
+             asiento.setHaber(haber);
+             asiento.setFecha(fecha);
+             asiento.setId_libro(this.lib);
+             asiento.instAsiento();
+             this.cargarAsiento();
+             this.limpiarCampos();
+         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void rescataLib(String id){
-        this.lib = id;
-    }
-public void mostrarCatalogo(){
-     String filePath = "src\\Catalogo.txt";
-        File cuentas = new File(filePath);
+    private void jScrollPane2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane2MousePressed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+             int index = this.jTable2.getSelectedRow();
+            this.jTCodigo.setText((String) this.jTable2.getValueAt(index, 0));
+            this.jTCuenta.setText((String) this.jTable2.getValueAt(index, 1));
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.asiento.deletAsiento(this.id,this.lib);
+        this.cargarAsiento();
         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+            int index = this.jTable1.getSelectedRow();
+        this.id = Integer.parseInt( this.jTable1.getValueAt(index, 0).toString());
+        System.out.print(this.id);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+        public void cargarAsiento(){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(cuentas));           
-            String firstLine = br.readLine().trim();
-            String[] columnsName = firstLine.split(",");
-            DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
-            model.setColumnIdentifiers(columnsName);
+             modelo.setColumnCount(0);
+          modelo.setRowCount(0);
+
+             this.jTable1.setModel(modelo);
+            ResultSet rst = conectO.consultaRegistros("select id,fecha,codigo,cuenta,concepto,debe,haber from asiento"
+                    + " where id_libro = "+this.lib+";");  
+            modelo.addColumn("id");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("codigo");
+            modelo.addColumn("cuenta");
+            modelo.addColumn("concepto");
+            modelo.addColumn("debe");
+            modelo.addColumn("haber");
+            while (rst.next()) {   
+                
+             Object[] data= {rst.getInt("id"),rst.getString("fecha"),
+                 rst.getInt("codigo"),rst.getString("cuenta"),rst.getString("concepto")
+                            ,rst.getDouble("debe"),rst.getDouble("haber")};                
+                modelo.addRow(data);               
+            }          
+        } catch (SQLException e) {
+            System.out.println(e);
             
-           
-            Object[] tableLines = br.lines().toArray();
-            
-            
-            for(int i = 0; i < tableLines.length; i++)
-            {
-                String line = tableLines[i].toString().trim();
-                String[] dataRow = line.split(",");
-                model.addRow(dataRow);
-            }
-            
-            
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
         }
     }
+    
+    
+
+    
+       public void limpiarCampos(){
+        this.jTidAsiento.setText(null);
+        this.jDate.setCalendar(null);
+        this.jTCodigo.setText(null);
+        this.jTCuenta.setText(null);
+        this.jTDebe.setText(null);
+        this.jTHaber.setText(null);
+        this.jTComentario.setText(null);
+    }
+    public void mostrarAsiento(){
+         String filePath = "src\\Catalogo.txt";
+            File cuentas = new File(filePath);
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(cuentas));           
+                String firstLine = br.readLine().trim();
+                String[] columnsName = firstLine.split(",");
+                DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+                model.setColumnIdentifiers(columnsName);
+
+
+                Object[] tableLines = br.lines().toArray();
+
+
+                for(int i = 0; i < tableLines.length; i++)
+                {
+                    String line = tableLines[i].toString().trim();
+                    String[] dataRow = line.split(",");
+                    model.addRow(dataRow);
+                }
+
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"error al cargar el catalogo<");
+            }
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel admin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTCodigo;
+    private javax.swing.JTextField jTComentario;
+    private javax.swing.JTextField jTCuenta;
+    private javax.swing.JTextField jTDebe;
+    private javax.swing.JTextField jTHaber;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTidAsiento;
     // End of variables declaration//GEN-END:variables
 }

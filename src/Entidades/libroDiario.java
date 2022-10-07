@@ -33,7 +33,7 @@ public class libroDiario {
             System.out.println(e+"errG");
         }
     }
-public void deleteLibro(String nLibro){
+public void deleteLibro(int nLibro){
         try {
             String stForm = String.format("delete from libroDiario where id_libro = '"+nLibro+"';");
             conn.instUpdRegistros(stForm);

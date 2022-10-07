@@ -18,9 +18,13 @@ public class frmAsiento extends javax.swing.JFrame {
     /**
      * Creates new form frmAsiento
      */
-    public frmAsiento() {
+    public frmAsiento(){
         initComponents();
-         jpLibroDiario panelLibro = new jpLibroDiario();
+    }
+    
+    public frmAsiento(int libro) {
+        initComponents();
+         jpLibroDiario panelLibro = new jpLibroDiario(libro);
         this.ShowPanel(panelLibro);
     }
     

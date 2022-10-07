@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Asiento {
     private int id;
     private int codigo;
-    private Date fecha;
+    private String fecha;
     private String cuenta;
     private String concepto;
     private double debe;
@@ -27,19 +27,19 @@ public class Asiento {
     
      public void instAsiento(){
         try {
-            String stForm = String.format("INSERT INTO asiento (id,codigo,cuenta,concepto,debe,haber,id_libro)"
-                    + "values('%s','%s','%s','%s','%s','%s','%s');"
+            String stForm = String.format("INSERT INTO asiento (id,codigo,fecha,cuenta,concepto,debe,haber,id_libro)"
+                    + "values('%s','%s','%s','%s','%s','%s','%s','%s');"
                     ,this.getId(),this.getCodigo(),this.getFecha(),this.getCuenta(),
-                    this.getConcepto(),this.getDebe(),this.getHaber());
+                    this.getConcepto(),this.getDebe(),this.getHaber(),this.getId_libro());
             conn.instUpdRegistros(stForm);
         } catch (Exception e) {
         }
     }
      
-     public void deletAsiento(){
+     public void deletAsiento(int id,int libro){
         try {
-            String stForm = String.format("DELETE FROM asiento where id = '"
-                    +this.getId()+"' and id_libro ='"+this.getId_libro()+"' )");
+            String stForm = String.format("DELETE FROM asiento where id = "
+                    +id+" and id_libro ="+libro);
             conn.instUpdRegistros(stForm);
         } catch (Exception e) {
         }
@@ -62,14 +62,14 @@ public class Asiento {
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

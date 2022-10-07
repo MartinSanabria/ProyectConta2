@@ -10,6 +10,11 @@ import Entidades.libroDiario;
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -23,7 +28,7 @@ public class jpCrearLibro extends javax.swing.JPanel {
     /**
      * Creates new form jpCrearLibro
      */
-    public String nLibro;
+    public int nLibro;
        conexion conectO;
     DefaultTableModel modelo = new DefaultTableModel();
       libroDiario libD ;
@@ -32,7 +37,7 @@ public class jpCrearLibro extends javax.swing.JPanel {
          libD = new libroDiario();
          conectO = new conexion();
          this.mostrarLibros();
-                 
+         this.btnGenerarAsiento.setEnabled(false);
     }
 frmPrincipal p = new frmPrincipal();
     /**
@@ -180,34 +185,45 @@ frmPrincipal p = new frmPrincipal();
         }
     }
     private void btnGenerarAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsientoActionPerformed
-        frmAsiento as = new frmAsiento();
+        frmAsiento as = new frmAsiento(this.nLibro);
+        System.out.println(this.nLibro);
         as.setVisible(true);
     }//GEN-LAST:event_btnGenerarAsientoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-     String empresa = this.nameEmpresa.getText().trim();
-        String fechaI = ((JTextField)this.fInicio.getDateEditor().getUiComponent()).getText();
-        String fechaF = ((JTextField)this.fFin.getDateEditor().getUiComponent()).getText();
-        
-        if (empresa.length()>0 && fechaI.getBytes().length>9 && fechaF.getBytes().length>9) {
-            
-           libD.setEmpresa(empresa);
-           libD.setF_fin(fechaF);
-           libD.setF_inicio(fechaI);       
-
-           libD.aggLibro();
-           this.mostrarLibros();
-           this.limpiarCampos();
-        }else{
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String empresa = this.nameEmpresa.getText().trim();
+        String fechaI = ((JTextField) this.fInicio.getDateEditor().getUiComponent()).getText();
+        String fechaF = ((JTextField) this.fFin.getDateEditor().getUiComponent()).getText();
+        try {
+            Date fI = formato.parse(fechaI);
+            Date fF = formato.parse(fechaF);
           
-            JOptionPane.showMessageDialog(null, "Por favor llene los campos de manera correcta", "Error", JOptionPane.ERROR_MESSAGE);
+            if (fI.equals(fF) || fI.before(fF)) {
+                if (empresa.length() > 0 && fechaI.getBytes().length > 9 && fechaF.getBytes().length > 9) {
+
+                    libD.setEmpresa(empresa);
+                    libD.setF_fin(fechaF);
+                    libD.setF_inicio(fechaI);
+
+                    libD.aggLibro();
+                    this.mostrarLibros();
+                    this.limpiarCampos();
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Por favor llene los campos de manera correcta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor ingrese fechas válidas", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(jpCrearLibro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGenerarAsientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarAsientoMousePressed
        
-        p.mostrarlibro();
     }//GEN-LAST:event_btnGenerarAsientoMousePressed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -219,7 +235,10 @@ frmPrincipal p = new frmPrincipal();
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
            int index = this.jTable1.getSelectedRow();
-        this.nLibro = (String) this.jTable1.getValueAt(index, 0);
+        this.nLibro = Integer.parseInt((String) this.jTable1.getValueAt(index, 0));
+        if (nLibro >0){
+            this.btnGenerarAsiento.setEnabled(true);
+        }
         
     }//GEN-LAST:event_jTable1MouseClicked
     
