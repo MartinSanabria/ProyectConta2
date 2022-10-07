@@ -133,6 +133,8 @@ public class jpLibroDiario extends javax.swing.JPanel {
 
         jLabel5.setText("Comentario:");
 
+        jDate.setDateFormatString("dd/MM/yyyy");
+
         jScrollPane2.setEnabled(false);
         jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
