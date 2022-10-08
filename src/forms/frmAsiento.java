@@ -24,12 +24,13 @@ public class frmAsiento extends javax.swing.JFrame {
     
     public frmAsiento(int libro) {
         initComponents();
+        this.setLocationRelativeTo(null);
          jpLibroDiario panelLibro = new jpLibroDiario(libro);
         this.ShowPanel(panelLibro);
     }
     
 public void ShowPanel(JPanel p){
-        p.setSize(800, 500);
+        p.setSize(800, 600);
         p.setLocation(0, 0);
         
         this.content.removeAll();
@@ -59,6 +60,7 @@ public void ShowPanel(JPanel p){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(6200, 3800));
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(620, 380));
 
@@ -72,7 +74,7 @@ public void ShowPanel(JPanel p){
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -80,7 +82,7 @@ public void ShowPanel(JPanel p){
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
+                .addGap(0, 35, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contentLayout.setVerticalGroup(
