@@ -67,7 +67,7 @@ public class jpLibroMayor extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
-        admin.setBackground(new java.awt.Color(204, 204, 255));
+        admin.setBackground(new java.awt.Color(249, 245, 235));
         admin.setMaximumSize(new java.awt.Dimension(620, 380));
         admin.setPreferredSize(new java.awt.Dimension(620, 380));
         admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,9 +109,9 @@ public class jpLibroMayor extends javax.swing.JPanel {
         jLabel1.setText("Seleccione un libro:");
         admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 153));
+        jButton1.setBackground(new java.awt.Color(231, 246, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Mayorización");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,9 +120,9 @@ public class jpLibroMayor extends javax.swing.JPanel {
         });
         admin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 153));
+        jButton2.setBackground(new java.awt.Color(231, 246, 242));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(0, 102, 102));
         jButton2.setText("Balance de comprobación");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,9 +135,9 @@ public class jpLibroMayor extends javax.swing.JPanel {
         jLabel2.setText("Generar documentos:");
         admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 153));
+        jButton3.setBackground(new java.awt.Color(231, 246, 242));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setForeground(new java.awt.Color(0, 102, 102));
         jButton3.setText("Libro diario");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -39,7 +39,7 @@ public class jpCrearLibro extends javax.swing.JPanel {
          this.mostrarLibros();
          this.btnGenerarAsiento.setEnabled(false);
     }
-frmPrincipal p = new frmPrincipal();
+//frmPrincipal p = new frmPrincipal();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,14 +64,15 @@ frmPrincipal p = new frmPrincipal();
         btnAgregar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
-        setMaximumSize(new java.awt.Dimension(620, 380));
-        setPreferredSize(new java.awt.Dimension(620, 380));
+        setMaximumSize(new java.awt.Dimension(620, 420));
+        setMinimumSize(new java.awt.Dimension(620, 420));
+        setPreferredSize(new java.awt.Dimension(620, 420));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        admin.setBackground(new java.awt.Color(204, 204, 255));
-        admin.setMaximumSize(new java.awt.Dimension(620, 380));
-        admin.setMinimumSize(new java.awt.Dimension(620, 380));
-        admin.setPreferredSize(new java.awt.Dimension(620, 380));
+        admin.setBackground(new java.awt.Color(249, 245, 235));
+        admin.setMaximumSize(new java.awt.Dimension(620, 420));
+        admin.setMinimumSize(new java.awt.Dimension(620, 420));
+        admin.setPreferredSize(new java.awt.Dimension(620, 420));
         admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1 = new javax.swing.JTable(){
@@ -98,6 +99,7 @@ frmPrincipal p = new frmPrincipal();
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setSelectionForeground(new java.awt.Color(165, 201, 202));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -105,23 +107,32 @@ frmPrincipal p = new frmPrincipal();
         });
         jScrollPane2.setViewportView(jTable1);
 
-        admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 620, 120));
+        admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 620, 170));
 
+        jLabel1.setBackground(new java.awt.Color(57, 91, 100));
+        jLabel1.setForeground(new java.awt.Color(57, 91, 100));
         jLabel1.setText("Nombre de la empresa");
-        admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-        admin.add(nameEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 214, -1));
+        admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        admin.add(nameEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 214, -1));
 
-        jLabel2.setText("Fecha de operación");
-        admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
-        admin.add(fInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 130, -1));
+        jLabel2.setBackground(new java.awt.Color(57, 91, 100));
+        jLabel2.setForeground(new java.awt.Color(57, 91, 100));
+        jLabel2.setText("Fecha de operación:");
+        admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        admin.add(fInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 130, -1));
 
+        jLabel3.setBackground(new java.awt.Color(57, 91, 100));
+        jLabel3.setForeground(new java.awt.Color(57, 91, 100));
         jLabel3.setText("Inicio:");
-        admin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-        admin.add(fFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 130, -1));
+        admin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        admin.add(fFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 130, -1));
 
+        jLabel4.setBackground(new java.awt.Color(57, 91, 100));
+        jLabel4.setForeground(new java.awt.Color(57, 91, 100));
         jLabel4.setText("Fin:");
-        admin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        admin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
+        btnGenerarAsiento.setForeground(new java.awt.Color(0, 102, 102));
         btnGenerarAsiento.setText("Generar Asiento");
         btnGenerarAsiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -133,25 +144,27 @@ frmPrincipal p = new frmPrincipal();
                 btnGenerarAsientoActionPerformed(evt);
             }
         });
-        admin.add(btnGenerarAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
+        admin.add(btnGenerarAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
+        btnEliminar.setForeground(new java.awt.Color(0, 102, 102));
         btnEliminar.setText("Eliminar libro");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        admin.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
+        admin.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
+        btnAgregar.setForeground(new java.awt.Color(0, 102, 102));
         btnAgregar.setText("Agregar Libro");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        admin.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        admin.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
-        add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, -1, 348));
+        add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 420));
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
