@@ -72,10 +72,6 @@ order by id_libro asc, codigo asc]]>
 	</background>
 	<title>
 		<band height="70" splitType="Stretch">
-			<image>
-				<reportElement x="275" y="0" width="300" height="64" uuid="bbceb9e4-a35e-4523-8f8c-d2aa7a23ab1e"/>
-				<imageExpression><![CDATA["leaf_banner_violet.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="cd88caae-0595-4609-8ac6-fccc2a363fe4"/>
 				<textElement verticalAlignment="Middle"/>
@@ -86,6 +82,10 @@ order by id_libro asc, codigo asc]]>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Cuentas T]]></text>
 			</staticText>
+			<image>
+				<reportElement x="464" y="2" width="89" height="68" uuid="84b21b31-a23a-4f60-9774-1f7403e342a0"/>
+				<imageExpression><![CDATA["C:\\Users\\raulv\\OneDrive\\Escritorio\\conta2\\ProyectConta2\\src\\reportes\\logo.jpeg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
