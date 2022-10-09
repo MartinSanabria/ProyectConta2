@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,13 +23,11 @@ public class conexion {
     public conexion(){
         try{
          conn = DriverManager.getConnection( "jdbc:sqlite:bdProyect.s3db" );
-         if ( conn != null ){
-            System.out.println("Conexión exitosa!");
-         }
+        
       }
       catch ( Exception ex ) {
          System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
-         System.out.println("Error en la conexión");
+         JOptionPane.showMessageDialog(null, "Ha ocurrido un error por favor intente de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
       }
 
     }
