@@ -5,6 +5,13 @@
  */
 package forms;
 
+import Conexion.conexion;
+import Entidades.libroDiario;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author blackbird
@@ -14,8 +21,20 @@ public class jpLibroMayor extends javax.swing.JPanel {
     /**
      * Creates new form jpLibroMayor
      */
+    
+    conexion conectO;
+    DefaultTableModel modelo = new DefaultTableModel();
+
+    int id;
+      libroDiario libD ;
     public jpLibroMayor() {
         initComponents();
+         libD = new libroDiario();
+         conectO = new conexion();
+         this.jTable1.setModel(modelo);
+  
+         this.mostrarLibros();
+      
     }
 
     /**
@@ -28,20 +47,18 @@ public class jpLibroMayor extends javax.swing.JPanel {
     private void initComponents() {
 
         admin = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField9 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         admin.setBackground(new java.awt.Color(204, 204, 255));
         admin.setMaximumSize(new java.awt.Dimension(620, 380));
         admin.setPreferredSize(new java.awt.Dimension(620, 380));
         admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        admin.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 200, -1));
-        admin.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 100, -1));
 
         jTable1 = new javax.swing.JTable(){
             public boolean isCellEditable (int row, int col){
@@ -67,38 +84,55 @@ public class jpLibroMayor extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-
-        admin.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 34, 600, 92));
-
-        jTable2 = new javax.swing.JTable(){
-            public boolean isCellEditable (int row, int col){
-                return false;
-            }
-        };
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Debe", "Haber"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane1.setViewportView(jTable1);
 
-        admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 220, 150));
-        admin.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 100, -1));
+        admin.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 110));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Seleccione un libro:");
+        admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 153));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Mayorización");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        admin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 153));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Balance de comprobación");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        admin.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Generar documentos:");
+        admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 153));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Libro diario");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        admin.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,15 +156,58 @@ public class jpLibroMayor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+         int index = this.jTable1.getSelectedRow();
+         this.id = Integer.parseInt(this.jTable1.getValueAt(index, 0).toString());
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null,this.id);///muestra el id del libro
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null,this.id);///muestra el id del libro
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         JOptionPane.showConfirmDialog(null,this.id); ///muestra el id del libro
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+ public void mostrarLibros(){
+        try {
+             modelo.setColumnCount(0);
+          modelo.setRowCount(0);
+            
+            ResultSet rst = conectO.consultaRegistros("select id_libro, nombre_empresa,fecha_inicio,fecha_fin from libroDiario;");  
+            modelo.addColumn("N° Libro");
+            modelo.addColumn("Empresa");
+            modelo.addColumn("Fecha de Inicio");
+            modelo.addColumn("Fecha de Fin");
+            while (rst.next()) {   
+                
+             Object[] data= {rst.getString("id_libro"),rst.getString("nombre_empresa"),
+                 rst.getString("fecha_inicio"),rst.getString("fecha_fin")};                
+                modelo.addRow(data);               
+            }          
+        } catch (SQLException e) {
+            System.out.println(e);
+            
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel admin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
