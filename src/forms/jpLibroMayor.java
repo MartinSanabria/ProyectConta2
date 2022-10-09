@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
@@ -177,23 +178,22 @@ public class jpLibroMayor extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          if(this.id !=0 ){
-               JOptionPane.showMessageDialog(null,this.id);
+              
              try {
             JasperReport jr = null;
              String path = "src\\reportes\\report1.jasper";
-            
+           
             Map Parameter = new HashMap();
         
            
              Parameter.put("id_libro", this.id);
-        
-            
+      
             jr =(JasperReport)JRLoader.loadObjectFromFile(path);
             JasperPrint jp = JasperFillManager.fillReport(jr,Parameter,conectO.ConnecrDB());
-            JasperViewer jv =new JasperViewer(jp);
+            JasperViewer jv =new JasperViewer(jp,false);
             jv.setVisible(true);
             jv.setTitle(path);
-            
+           
             
             
             } catch (JRException ex) {
@@ -211,24 +211,22 @@ public class jpLibroMayor extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         if(this.id !=0 ){
-               JOptionPane.showMessageDialog(null,this.id);
+         if(this.id !=0 ){              
              try {
+                 
             JasperReport jr = null;
              String path = "src\\reportes\\report2.jasper";
             
-            Map Parameter = new HashMap();
-        
+            Map Parameter = new HashMap();        
            
-             Parameter.put("libro_id", this.id);
-        
+             Parameter.put("libro_id", this.id);        
             
             jr =(JasperReport)JRLoader.loadObjectFromFile(path);
             JasperPrint jp = JasperFillManager.fillReport(jr,Parameter,conectO.ConnecrDB());
-            JasperViewer jv =new JasperViewer(jp);
+            JasperViewer jv =new JasperViewer(jp,false);
             jv.setVisible(true);
             jv.setTitle(path);
-            
+          
             
             
             } catch (JRException ex) {
@@ -246,8 +244,7 @@ public class jpLibroMayor extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
          
-         if(this.id !=0 ){
-             JOptionPane.showMessageDialog(null,this.id);
+         if(this.id !=0 ){            
              try {
             JasperReport jr = null;
              String path = "src\\reportes\\report_Asientos.jasper";
@@ -260,7 +257,7 @@ public class jpLibroMayor extends javax.swing.JPanel {
             
             jr =(JasperReport)JRLoader.loadObjectFromFile(path);
             JasperPrint jp = JasperFillManager.fillReport(jr,Parameter,conectO.ConnecrDB());
-            JasperViewer jv =new JasperViewer(jp);
+            JasperViewer jv =new JasperViewer(jp,false);
             jv.setVisible(true);
             jv.setTitle(path);
             

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="asiento" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b10015ed-08e9-4ee4-89a6-c18ba500cfca">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="114"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -56,7 +56,7 @@
 				<frame>
 					<reportElement mode="Opaque" x="0" y="7" width="555" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="7b394c81-13ac-42cb-b4cb-1e66301f979b"/>
 					<textField isStretchWithOverflow="true">
-						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="0" width="479" height="24" forecolor="#FFFFFF" uuid="1ce45bb4-3084-4c14-b5ae-47b1f2e364ca"/>
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="103" y="0" width="378" height="24" forecolor="#FFFFFF" uuid="1ce45bb4-3084-4c14-b5ae-47b1f2e364ca"/>
 						<textElement>
 							<font isBold="false"/>
 						</textElement>
@@ -123,10 +123,6 @@
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
-			<image>
-				<reportElement x="435" y="0" width="120" height="100" uuid="03d6fb57-49c9-43f5-99c8-5969771821d5"/>
-				<imageExpression><![CDATA["C:\\Users\\raulv\\OneDrive\\Escritorio\\proyecto2\\ProyectConta2\\src\\reportes\\logo.jpeg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

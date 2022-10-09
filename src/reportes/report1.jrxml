@@ -82,10 +82,6 @@ order by id_libro asc, codigo asc]]>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Cuentas T]]></text>
 			</staticText>
-			<image>
-				<reportElement x="464" y="2" width="89" height="68" uuid="84b21b31-a23a-4f60-9774-1f7403e342a0"/>
-				<imageExpression><![CDATA["C:\\Users\\raulv\\OneDrive\\Escritorio\\conta2\\ProyectConta2\\src\\reportes\\logo.jpeg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

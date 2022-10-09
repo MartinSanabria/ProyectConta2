@@ -70,10 +70,6 @@ order by cuenta asc]]>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
-			<image>
-				<reportElement x="451" y="0" width="102" height="86" uuid="7c2899f5-62f7-4b59-a450-eefb8f177635"/>
-				<imageExpression><![CDATA["C:\\Users\\raulv\\OneDrive\\Escritorio\\conta2\\ProyectConta2\\src\\reportes\\logo.jpeg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
