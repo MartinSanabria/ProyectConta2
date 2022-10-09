@@ -13,6 +13,7 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
 	<parameter name="libro_id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -73,19 +74,15 @@ order by cuenta asc]]>
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#006666" uuid="d673254d-a293-4575-b748-e4a0cb42aa22"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#006666" uuid="d673254d-a293-4575-b748-e4a0cb42aa22"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="6d93dceb-787a-43e9-88f9-a743f3780e05"/>
+					<reportElement x="409" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="6d93dceb-787a-43e9-88f9-a743f3780e05"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
-			<image>
-				<reportElement x="451" y="0" width="102" height="86" uuid="7c2899f5-62f7-4b59-a450-eefb8f177635"/>
-				<imageExpression><![CDATA["C:\\Users\\raulv\\OneDrive\\Escritorio\\conta2\\ProyectConta2\\src\\reportes\\logo.jpeg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -203,20 +200,39 @@ order by cuenta asc]]>
 			</line>
 			<textField>
 				<reportElement x="455" y="54" width="100" height="20" uuid="74678d96-36f5-4634-adf1-9626c5cc7723"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{saldo_acreedor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="344" y="54" width="100" height="20" uuid="856ce93a-b440-4427-98a3-5389e2a91ec7"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{saldo_deudor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="222" y="54" width="100" height="20" uuid="9c658a09-de94-4b58-b825-5b952fa288ff"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ttm_acreedor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="111" y="54" width="100" height="20" uuid="a21b1309-74fa-48af-9e12-ca3fa86b2ec3"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ttm_deudor}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="14" y="54" width="85" height="20" uuid="ebe88ec1-a508-479d-ac61-5773e535974e"/>
+				<textElement>
+					<font size="13" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 	<pageFooter>

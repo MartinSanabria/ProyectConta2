@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="asiento" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b10015ed-08e9-4ee4-89a6-c18ba500cfca">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="114"/>
+	<property name="ireport.y" value="109"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -60,7 +60,7 @@
 						<textElement>
 							<font isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA[""+$F{id}]]></textFieldExpression>
+						<textFieldExpression><![CDATA["Asiento N°: "+$F{id}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -68,21 +68,21 @@
 		<groupFooter>
 			<band height="71">
 				<textField>
-					<reportElement x="270" y="39" width="100" height="20" uuid="830559c1-8062-486f-91df-15ae87d8d361"/>
+					<reportElement x="406" y="39" width="75" height="20" uuid="830559c1-8062-486f-91df-15ae87d8d361"/>
 					<textElement>
-						<font fontName="Arial Black" size="14"/>
+						<font fontName="Arial Black" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{debe_1}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="370" y="39" width="100" height="20" uuid="ed59dc5d-bacb-4185-b066-6c49f8a692a9"/>
+					<reportElement x="481" y="39" width="74" height="20" uuid="ed59dc5d-bacb-4185-b066-6c49f8a692a9"/>
 					<textElement>
-						<font fontName="Arial Black" size="14"/>
+						<font fontName="Arial Black" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{haber_t}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="201" y="19" width="100" height="20" uuid="c9635dff-2721-48a0-99d5-2bba4a30c1f0"/>
+					<reportElement x="335" y="19" width="100" height="20" uuid="c9635dff-2721-48a0-99d5-2bba4a30c1f0"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
@@ -145,28 +145,28 @@
 				<text><![CDATA[fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="138" y="7" width="69" height="18" forecolor="#000000" uuid="f05bad9b-73e6-41f2-8fd1-c503c0bbe0fe"/>
+				<reportElement style="Column header" x="138" y="7" width="132" height="18" forecolor="#000000" uuid="f05bad9b-73e6-41f2-8fd1-c503c0bbe0fe"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[cuenta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="207" y="7" width="69" height="18" forecolor="#000000" uuid="14f1b56b-2313-438c-9541-42b8631c6d7f"/>
+				<reportElement style="Column header" x="270" y="7" width="136" height="18" forecolor="#000000" uuid="14f1b56b-2313-438c-9541-42b8631c6d7f"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[concepto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="276" y="7" width="69" height="18" forecolor="#000000" uuid="ec175653-8e29-4dc1-9849-66f27c52dcb6"/>
+				<reportElement style="Column header" x="406" y="7" width="75" height="18" forecolor="#000000" uuid="ec175653-8e29-4dc1-9849-66f27c52dcb6"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[debe]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="345" y="7" width="69" height="18" forecolor="#000000" uuid="0adb1f9a-8a07-4b2b-a6db-aff5f7258014"/>
+				<reportElement style="Column header" x="481" y="7" width="74" height="18" forecolor="#000000" uuid="0adb1f9a-8a07-4b2b-a6db-aff5f7258014"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
@@ -181,42 +181,42 @@
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="0" y="0" width="69" height="18" uuid="c8438a1f-0c11-421c-823c-0eb664fb68c3"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{codigo}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="69" y="0" width="69" height="18" uuid="e5662559-d6d0-48a7-8bb5-16fb07eb7e97"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{fecha}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="138" y="0" width="69" height="18" uuid="f112ce89-156b-473f-b33d-3df232ce58ba"/>
+					<reportElement style="Detail" positionType="Float" x="138" y="0" width="132" height="18" uuid="f112ce89-156b-473f-b33d-3df232ce58ba"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{cuenta}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="207" y="0" width="69" height="18" uuid="e504cc52-5044-4f3a-baa3-66af770afc3f"/>
+					<reportElement style="Detail" positionType="Float" x="270" y="0" width="136" height="18" uuid="e504cc52-5044-4f3a-baa3-66af770afc3f"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{concepto}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Row" positionType="Float" x="276" y="0" width="69" height="18" uuid="3b761be4-9d61-442f-82b6-ff9534360a94"/>
+					<reportElement style="Row" positionType="Float" x="406" y="0" width="75" height="18" uuid="3b761be4-9d61-442f-82b6-ff9534360a94"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{debe}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="#,##0.000">
-					<reportElement style="Detail" positionType="Float" x="345" y="0" width="69" height="18" uuid="55663322-ef83-4363-90d7-1b29bbe14f07"/>
+					<reportElement style="Detail" positionType="Float" x="481" y="0" width="74" height="18" uuid="55663322-ef83-4363-90d7-1b29bbe14f07"/>
 					<textElement>
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[""+$F{haber}]]></textFieldExpression>
 				</textField>
@@ -260,25 +260,25 @@
 				</textField>
 			</frame>
 			<textField>
-				<reportElement x="270" y="17" width="100" height="20" uuid="227dcdd9-a896-4766-b502-974f1dc9e29f"/>
+				<reportElement x="344" y="20" width="100" height="20" uuid="227dcdd9-a896-4766-b502-974f1dc9e29f"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{ttdebe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="381" y="17" width="100" height="20" uuid="f7e7669e-b133-486d-acc7-02718759212b"/>
+				<reportElement x="455" y="20" width="100" height="20" uuid="f7e7669e-b133-486d-acc7-02718759212b"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tthaber}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="231" y="0" width="100" height="20" uuid="9fb41dc9-21eb-4126-99e1-672a30ecd51e"/>
+				<reportElement x="235" y="20" width="100" height="20" uuid="9fb41dc9-21eb-4126-99e1-672a30ecd51e"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Total asientos: ]]></text>
+				<text><![CDATA[Total: ]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
