@@ -67,13 +67,11 @@ public class jpCrearLibro extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(620, 420));
         setMinimumSize(new java.awt.Dimension(620, 420));
         setPreferredSize(new java.awt.Dimension(620, 420));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         admin.setBackground(new java.awt.Color(249, 245, 235));
         admin.setMaximumSize(new java.awt.Dimension(620, 420));
         admin.setMinimumSize(new java.awt.Dimension(620, 420));
         admin.setPreferredSize(new java.awt.Dimension(620, 420));
-        admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1 = new javax.swing.JTable(){
             public boolean isCellEditable (int row, int col){
@@ -107,30 +105,21 @@ public class jpCrearLibro extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        admin.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 620, 170));
-
         jLabel1.setBackground(new java.awt.Color(57, 91, 100));
         jLabel1.setForeground(new java.awt.Color(57, 91, 100));
         jLabel1.setText("Nombre de la empresa");
-        admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        admin.add(nameEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 214, -1));
 
         jLabel2.setBackground(new java.awt.Color(57, 91, 100));
         jLabel2.setForeground(new java.awt.Color(57, 91, 100));
         jLabel2.setText("Fecha de operación:");
-        admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-        admin.add(fInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 130, -1));
 
         jLabel3.setBackground(new java.awt.Color(57, 91, 100));
         jLabel3.setForeground(new java.awt.Color(57, 91, 100));
         jLabel3.setText("Inicio:");
-        admin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-        admin.add(fFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 130, -1));
 
         jLabel4.setBackground(new java.awt.Color(57, 91, 100));
         jLabel4.setForeground(new java.awt.Color(57, 91, 100));
         jLabel4.setText("Fin:");
-        admin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
         btnGenerarAsiento.setForeground(new java.awt.Color(0, 102, 102));
         btnGenerarAsiento.setText("Generar Asiento");
@@ -144,7 +133,6 @@ public class jpCrearLibro extends javax.swing.JPanel {
                 btnGenerarAsientoActionPerformed(evt);
             }
         });
-        admin.add(btnGenerarAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
         btnEliminar.setForeground(new java.awt.Color(0, 102, 102));
         btnEliminar.setText("Eliminar libro");
@@ -153,7 +141,6 @@ public class jpCrearLibro extends javax.swing.JPanel {
                 btnEliminarActionPerformed(evt);
             }
         });
-        admin.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
         btnAgregar.setForeground(new java.awt.Color(0, 102, 102));
         btnAgregar.setText("Agregar Libro");
@@ -162,9 +149,71 @@ public class jpCrearLibro extends javax.swing.JPanel {
                 btnAgregarActionPerformed(evt);
             }
         });
-        admin.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
-        add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 420));
+        javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);
+        admin.setLayout(adminLayout);
+        adminLayout.setHorizontalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(10, 10, 10)
+                .addComponent(nameEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3)
+                .addGap(38, 38, 38)
+                .addComponent(fInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel4)
+                .addGap(21, 21, 21)
+                .addComponent(fFin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(btnAgregar)
+                .addGap(8, 8, 8)
+                .addComponent(btnEliminar)
+                .addGap(10, 10, 10)
+                .addComponent(btnGenerarAsiento))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        adminLayout.setVerticalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(nameEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(14, 14, 14)
+                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(fInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(fFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnGenerarAsiento))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents

@@ -100,14 +100,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 
         jpBground.setBackground(new java.awt.Color(255, 255, 255));
-        jpBground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpcontenido.setBackground(new java.awt.Color(233, 222, 228));
         jpcontenido.setPreferredSize(new java.awt.Dimension(620, 380));
 
         Menu.setBackground(new java.awt.Color(57, 91, 100));
         Menu.setPreferredSize(new java.awt.Dimension(120, 420));
-        Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btndiario.setBackground(new java.awt.Color(57, 91, 100));
         btndiario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -126,15 +124,26 @@ public class frmPrincipal extends javax.swing.JFrame {
                 btndiarioMousePressed(evt);
             }
         });
-        btndiario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(249, 245, 235));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("LIBRO DIARIO");
-        btndiario.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 30));
 
-        Menu.add(btndiario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 120, 50));
+        javax.swing.GroupLayout btndiarioLayout = new javax.swing.GroupLayout(btndiario);
+        btndiario.setLayout(btndiarioLayout);
+        btndiarioLayout.setHorizontalGroup(
+            btndiarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btndiarioLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btndiarioLayout.setVerticalGroup(
+            btndiarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btndiarioLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         btnmayor.setBackground(new java.awt.Color(57, 91, 100));
         btnmayor.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -153,15 +162,26 @@ public class frmPrincipal extends javax.swing.JFrame {
                 btnmayorMousePressed(evt);
             }
         });
-        btnmayor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(249, 245, 235));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("LIBRO MAYOR");
-        btnmayor.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 30));
 
-        Menu.add(btnmayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, 50));
+        javax.swing.GroupLayout btnmayorLayout = new javax.swing.GroupLayout(btnmayor);
+        btnmayor.setLayout(btnmayorLayout);
+        btnmayorLayout.setHorizontalGroup(
+            btnmayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnmayorLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnmayorLayout.setVerticalGroup(
+            btnmayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnmayorLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         btncatalogo.setBackground(new java.awt.Color(57, 91, 100));
         btncatalogo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -211,8 +231,6 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Menu.add(btncatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
-
         btnintegrantes.setBackground(new java.awt.Color(57, 91, 100));
         btnintegrantes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnintegrantes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -230,18 +248,55 @@ public class frmPrincipal extends javax.swing.JFrame {
                 btnintegrantesMousePressed(evt);
             }
         });
-        btnintegrantes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(249, 245, 235));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("INTEGRANTES");
-        btnintegrantes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 30));
 
-        Menu.add(btnintegrantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, 50));
+        javax.swing.GroupLayout btnintegrantesLayout = new javax.swing.GroupLayout(btnintegrantes);
+        btnintegrantes.setLayout(btnintegrantesLayout);
+        btnintegrantesLayout.setHorizontalGroup(
+            btnintegrantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnintegrantesLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnintegrantesLayout.setVerticalGroup(
+            btnintegrantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnintegrantesLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         lbliconmini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logw.png"))); // NOI18N
-        Menu.add(lbliconmini, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 90));
+
+        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
+        Menu.setLayout(MenuLayout);
+        MenuLayout.setHorizontalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbliconmini, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btndiario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnmayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btncatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnintegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        MenuLayout.setVerticalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbliconmini, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btndiario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnmayor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btncatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnintegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         content.setBackground(new java.awt.Color(249, 245, 235));
         content.setMaximumSize(new java.awt.Dimension(620, 380));
@@ -263,7 +318,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(contentLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblicon, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpcontenidoLayout = new javax.swing.GroupLayout(jpcontenido);
@@ -285,7 +340,16 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jpBground.add(jpcontenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
+        javax.swing.GroupLayout jpBgroundLayout = new javax.swing.GroupLayout(jpBground);
+        jpBground.setLayout(jpBgroundLayout);
+        jpBgroundLayout.setHorizontalGroup(
+            jpBgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpcontenido, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jpBgroundLayout.setVerticalGroup(
+            jpBgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpcontenido, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

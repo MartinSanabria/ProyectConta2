@@ -70,7 +70,6 @@ public class jpLibroMayor extends javax.swing.JPanel {
         admin.setBackground(new java.awt.Color(249, 245, 235));
         admin.setMaximumSize(new java.awt.Dimension(620, 380));
         admin.setPreferredSize(new java.awt.Dimension(620, 380));
-        admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1 = new javax.swing.JTable(){
             public boolean isCellEditable (int row, int col){
@@ -103,11 +102,8 @@ public class jpLibroMayor extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        admin.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 110));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Seleccione un libro:");
-        admin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(231, 246, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -118,7 +114,6 @@ public class jpLibroMayor extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        admin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(231, 246, 242));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -129,11 +124,9 @@ public class jpLibroMayor extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        admin.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Generar documentos:");
-        admin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(231, 246, 242));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -144,7 +137,43 @@ public class jpLibroMayor extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        admin.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+
+        javax.swing.GroupLayout adminLayout = new javax.swing.GroupLayout(admin);
+        admin.setLayout(adminLayout);
+        adminLayout.setHorizontalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2))
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jButton3)
+                .addGap(51, 51, 51)
+                .addComponent(jButton1)
+                .addGap(69, 69, 69)
+                .addComponent(jButton2))
+        );
+        adminLayout.setVerticalGroup(
+            adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addGap(20, 20, 20)
+                .addGroup(adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
